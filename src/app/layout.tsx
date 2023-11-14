@@ -1,8 +1,30 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
+import {ReactNode} from "react";
 
 const inter = Inter({ subsets: ['latin'] })
+
+const relative = localFont({
+  src: [
+    {
+      path: './Relative/Relative-Book.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+  {
+      path: './Relative/Relative-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+  {
+      path: './Relative/Relative-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    }
+  ]
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,11 +34,11 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${relative.className} bg-[#d8d5d1] overflow-x-hidden selection:bg-[#0A0A0A] selection:text-white`}>{children}</body>
     </html>
   )
 }
